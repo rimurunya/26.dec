@@ -1,0 +1,536 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.dark {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    color: #e0e0e0;
+}
+
+body.dark header {
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark nav button {
+    background: linear-gradient(45deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    color: #e0e0e0;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+body.dark nav button:hover {
+    background: linear-gradient(45deg, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
+}
+
+body.dark .card {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.9) 100%);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark input, body.dark textarea, body.dark select {
+    background: rgba(26, 26, 46, 0.6);
+    color: #e0e0e0;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+body.dark input:focus, body.dark textarea:focus, body.dark select:focus {
+    outline: 2px solid #667eea;
+    border-color: #667eea;
+}
+
+body.dark .progress-bar {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+body.dark .progress-fill {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+body.dark .step {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+body.dark .step.completed {
+    background: rgba(102, 126, 234, 0.3);
+}
+
+body.dark .category-all {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    color: #e0e0e0;
+}
+
+body.dark .category-study {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: #e0e0e0;
+}
+
+body.dark .category-sport {
+    background: linear-gradient(45deg, #55efc4, #00b894);
+    color: #e0e0e0;
+}
+
+body.dark .category-finance {
+    background: linear-gradient(45deg, #ffeaa7, #d63031);
+    color: #333;
+}
+
+body.dark .category-other {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+    color: #e0e0e0;
+}
+
+body.dark .chart {
+    background: rgba(26, 26, 46, 0.6);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0 0 20px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.2); }
+}
+
+nav button {
+    background: linear-gradient(45deg, #ff9a9e, #fecfef);
+    border: none;
+    padding: 12px 20px;
+    margin: 0 5px;
+    border-radius: 25px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+nav button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+nav button:hover::before {
+    left: 100%;
+}
+
+nav button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+#home-btn::after { content: ' 🏠'; }
+#goals-btn::after { content: ' 🎯'; }
+
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    min-height: calc(100vh - 120px);
+}
+
+body.dark main {
+    background: rgba(26, 26, 46, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+    min-height: calc(100vh - 120px);
+}
+
+/* Карточки */
+.card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.6s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .card {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопки */
+.btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+}
+
+/* Формы */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea, select {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    background: white;
+    color: #495057;
+    font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid #74b9ff;
+    border-color: #74b9ff;
+}
+
+/* Прогресс-бар */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #74b9ff, #0984e3);
+    transition: width 0.5s;
+}
+
+/* Список шагов */
+.step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.step.completed {
+    background: #d4edda;
+    text-decoration: line-through;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Категории */
+.categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.category {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.category-all {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    color: white;
+}
+
+.category-study {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+}
+
+.category-sport {
+    background: linear-gradient(45deg, #55efc4, #00b894);
+    color: white;
+}
+
+.category-finance {
+    background: linear-gradient(45deg, #ffeaa7, #d63031);
+    color: #333;
+}
+
+.category-other {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+    color: white;
+}
+
+/* График */
+.chart {
+    width: 100%;
+    height: 200px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+body.dark .chart-bar {
+    color: #e0e0e0;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Медиа-запросы для мобильных */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+/* Footer styles (по образцу) */
+#site-footer {
+    background: #1f1f1f;
+    color: #e6e6e6;
+    padding: 24px 0;
+    position: relative;
+}
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.footer-left {
+    display: flex;
+    flex-direction: column;
+}
+.footer-logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+.footer-logo .logo-part1 { color: #ffffff; }
+.footer-logo .logo-part2 {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.footer-note {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: rgba(230,230,230,0.7);
+}
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.footer-nav a {
+    color: rgba(230,230,230,0.9);
+    text-decoration: none;
+    margin-left: 14px;
+    font-size: 0.95rem;
+}
+.footer-nav a:first-child { margin-left: 0; }
+.footer-nav a:hover { color: #ffffff; text-decoration: underline; }
+#open-external {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: rgba(230,230,230,0.9);
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#open-external:hover { background: rgba(255,255,255,0.1); }
+
+/* Кнопка "вверх" */
+#back-to-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.3));
+    color: #e6e6e6;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+#back-to-top:hover { transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+    .footer-inner { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .footer-right { width: 100%; justify-content: space-between; }
+    #back-to-top { right: 14px; bottom: 14px; }
+}
